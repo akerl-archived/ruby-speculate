@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+require 'speculate'
+require 'mercenary'
+
+# rubocop:disable Metrics/BlockLength
+Mercenary.program(:speculate) do |p|
+  p.version Speculate::VERSION
+  p.description 'Tool for assuming roles in AWS accounts'
+  p.syntax 'speculate [options] account-id role-name'
+
+  p.action do |_, options|
+    account_id, role_name = ARGV.shift 2
+    if !account_id || !role_name
+      puts p
+      exit 1
+    end
+    Speculate.new(account_id: account_id, role_name: role_name).print!
+  end
+end
