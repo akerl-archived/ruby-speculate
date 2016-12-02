@@ -3,7 +3,6 @@
 require 'speculate'
 require 'mercenary'
 
-# rubocop:disable Metrics/BlockLength
 Mercenary.program(:speculate) do |p|
   p.version Speculate::VERSION
   p.description 'Tool for assuming roles in AWS accounts'
@@ -15,6 +14,8 @@ Mercenary.program(:speculate) do |p|
       puts p
       exit 1
     end
-    Speculate.new(account_id: account_id, role_name: role_name).print!
+    options[:account_id] = account_id
+    options[:role_name] = role_name
+    Speculate.new(options).print!
   end
 end
