@@ -8,14 +8,17 @@ Mercenary.program(:speculate) do |p|
   p.description 'Tool for assuming roles in AWS accounts'
   p.syntax 'speculate [options] account-id role-name'
 
+  # rubocop:disable Metrics/LineLength
+  p.option :account_id, '-a ACCOUNT_ID', '--accountid ACCOUNT_ID', 'Account ID to assume role on'
+  # rubocop:enable Metrics/LineLength
+
   p.action do |_, options|
-    account_id, role_name = ARGV.shift 2
-    if !account_id || !role_name
+    options[:role_name] = ARGV.shift 1
+    unless options[:role_name]
       puts p
       exit 1
     end
-    options[:account_id] = account_id
-    options[:role_name] = role_name
-    Speculate.new(options).print!
+    session = Speculate.new(options)
+    puts session.url
   end
 end
