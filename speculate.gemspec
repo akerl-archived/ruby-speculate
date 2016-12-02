@@ -15,6 +15,7 @@ Gem::Specification.new do |s|
 
   s.files       = `git ls-files`.split
   s.test_files  = `git ls-files spec/*`.split
+  s.executables = ['speculate']
 
   s.add_dependency 'aws-sdk', '~> 2.6.0'
 
