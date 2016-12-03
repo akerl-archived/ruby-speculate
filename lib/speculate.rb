@@ -1,5 +1,3 @@
-require 'aws-sdk'
-
 ##
 # Base module for Speculate
 module Speculate
