@@ -10,6 +10,8 @@ Mercenary.program(:speculate) do |p|
 
   # rubocop:disable Metrics/LineLength
   p.option :account_id, '-a ACCOUNT_ID', '--accountid ACCOUNT_ID', 'Account ID to assume role on'
+  p.option :browser, '-b', '--browser', 'Open console URL in browser'
+  p.option :logout, '-l', '--logout', 'Log out of existing console browser session first'
   # rubocop:enable Metrics/LineLength
 
   p.action do |_, options|
@@ -19,6 +21,13 @@ Mercenary.program(:speculate) do |p|
       exit 1
     end
     session = Speculate.new(options)
-    p session.url
+    puts session.to_envvars, "\n# #{session.url}"
+    if options[:browser]
+      if options[:logout]
+        system('open', session.logout_url)
+        sleep 1
+      end
+      system('open', session.url)
+    end
   end
 end

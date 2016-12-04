@@ -12,5 +12,6 @@ module Speculate
 end
 
 require 'speculate/version'
+require 'speculate/formatters'
 require 'speculate/console'
 require 'speculate/assumption'

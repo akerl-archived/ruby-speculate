@@ -22,6 +22,10 @@ module Speculate
       ].join
     end
 
+    def logout_url
+      @logout_url ||= 'https://console.aws.amazon.com/ec2/logout!doLogout'.freeze
+    end
+
     private
 
     def signin_token
