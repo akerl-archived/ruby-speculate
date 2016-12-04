@@ -13,7 +13,7 @@ module Speculate
     end
 
     def url
-      @url ||= Speculate::Console.new(creds: creds)
+      @url ||= Speculate::Console.new(creds: creds).url
     end
 
     private
