@@ -3,6 +3,8 @@ require 'open-uri'
 require 'json'
 
 module Speculate
+  ##
+  # Define console URL class
   class Console
     def initialize(params = {})
       @options = params
