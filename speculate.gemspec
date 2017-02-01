@@ -18,6 +18,8 @@ Gem::Specification.new do |s|
   s.executables = ['speculate']
 
   s.add_dependency 'aws-sdk', '~> 2.7.0'
+  s.add_dependency 'mercenary', '~> 0.3.4'
+  s.add_dependency 'userinput', '~> 1.0.0'
 
   s.add_development_dependency 'rubocop', '~> 0.47.0'
   s.add_development_dependency 'rake', '~> 12.0.0'

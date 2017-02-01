@@ -27,16 +27,26 @@ module Speculate
     def assumed_role
       @assumed_role ||= client.assume_role(
         role_arn: role_arn,
-        role_session_name: role_session_name
+        role_session_name: role_session_name,
+        serial_number: mfa_device,
+        token_code: mfa
       )
     end
 
     def client
-      @client ||= Aws::STS::Client.new
+      @client ||= Aws::STS::Client.new(local_config)
     end
 
     def console
       @console ||= Speculate::Console.new(creds: creds)
+    end
+
+    def mfa
+      @mfa ||= @options[:mfa]
+    end
+
+    def mfa_device
+      @mfa_device ||= local_identity.arn.sub('user/', 'mfa/')
     end
 
     def role_name
@@ -65,6 +75,10 @@ module Speculate
 
     def local_identity
       @local_identity ||= client.get_caller_identity
+    end
+
+    def local_config
+      @local_config ||= @options[:creds] || {}
     end
   end
 end

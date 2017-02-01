@@ -1,7 +1,10 @@
 #!/usr/bin/env ruby
 
 require 'speculate'
+require 'userinput'
 require 'mercenary'
+
+MFA_ASKER = UserInput.new(validation: /\d{6}/, message: 'MFA code')
 
 Mercenary.program(:speculate) do |p|
   p.version Speculate::VERSION
@@ -12,6 +15,7 @@ Mercenary.program(:speculate) do |p|
   p.option :account_id, '-a ACCOUNT_ID', '--accountid ACCOUNT_ID', 'Account ID to assume role on'
   p.option :browser, '-b', '--browser', 'Open console URL in browser'
   p.option :logout, '-l', '--logout', 'Log out of existing console browser session first'
+  p.option :mfa, '-m [TOKEN]', '--mfa [TOKEN]', 'Use MFA when assuming role'
   # rubocop:enable Metrics/LineLength
 
   p.action do |_, options|
@@ -20,7 +24,7 @@ Mercenary.program(:speculate) do |p|
       puts p
       exit 1
     end
-    session = Speculate.new(options)
+    options[:mfa] = MFA_ASKER.ask if options.fetch(:mfa, 0).nil?
     puts session.to_envvars, "\n# #{session.url}"
     if options[:browser]
       if options[:logout]
