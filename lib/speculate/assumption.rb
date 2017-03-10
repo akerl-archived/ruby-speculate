@@ -28,8 +28,7 @@ module Speculate
       @assumed_role ||= client.assume_role(
         role_arn: role_arn,
         role_session_name: role_session_name,
-        serial_number: mfa_device,
-        token_code: mfa
+        **mfa_args
       )
     end
 
@@ -47,6 +46,11 @@ module Speculate
 
     def mfa_device
       @mfa_device ||= local_identity.arn.sub('user/', 'mfa/')
+    end
+
+    def mfa_args
+      return {} unless mfa
+      { serial_number: mfa_device, token_code: mfa }
     end
 
     def role_name

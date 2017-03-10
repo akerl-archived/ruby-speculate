@@ -25,6 +25,7 @@ Mercenary.program(:speculate) do |p|
       exit 1
     end
     options[:mfa] = MFA_ASKER.ask if options.fetch(:mfa, 0).nil?
+    session = Speculate.new(options)
     puts session.to_envvars, "\n# #{session.url}"
     if options[:browser]
       if options[:logout]
