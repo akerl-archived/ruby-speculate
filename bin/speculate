@@ -4,7 +4,7 @@ require 'speculate'
 require 'userinput'
 require 'mercenary'
 
-MFA_ASKER = UserInput.new(validation: /\d{6}/, message: 'MFA code')
+MFA_ASKER = UserInput.new(validation: /\d{6}/, message: 'MFA code', fd: STDERR)
 
 Mercenary.program(:speculate) do |p|
   p.version Speculate::VERSION
