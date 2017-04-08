@@ -6,6 +6,6 @@ item do
 
   actual do
     gemnasium
-    slug 'akerl/speculate'
+    slug 'akerl/ruby-speculate'
   end
 end
