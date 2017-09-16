@@ -1,4 +1,5 @@
-$:.unshift File.expand_path('../lib/', __FILE__)
+require 'English'
+$LOAD_PATH.unshift File.expand_path('../lib/', __FILE__)
 require 'speculate/version'
 
 Gem::Specification.new do |s|
@@ -7,7 +8,7 @@ Gem::Specification.new do |s|
   s.date        = Time.now.strftime('%Y-%m-%d')
 
   s.summary     = 'Tool for assuming roles in AWS accounts'
-  s.description = "Tool for assuming roles in AWS accounts"
+  s.description = 'Tool for assuming roles in AWS accounts'
   s.authors     = ['Les Aker']
   s.email       = 'me@lesaker.org'
   s.homepage    = 'https://github.com/akerl/speculate'
