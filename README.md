@@ -4,7 +4,7 @@ speculate
 =========
 
 [![Gem Version](https://img.shields.io/gem/v/speculate.svg)](https://rubygems.org/gems/speculate)
-[![Build Status](https://img.shields.io/circleci/project/akerl/ruby-speculate.svg)](https://circleci.com/gh/akerl/ruby-speculate)
+[![Build Status](https://img.shields.io/travis/com/akerl/ruby-speculate.svg)](https://travis-ci.com/akerl/ruby-speculate)
 [![Coverage Status](https://img.shields.io/codecov/c/github/akerl/ruby-speculate.svg)](https://codecov.io/github/akerl/ruby-speculate)
 [![Code Quality](https://img.shields.io/codacy/1a0888d1510f4e39b62db9c8699c4946.svg)](https://www.codacy.com/app/akerl/ruby-speculate)
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-green.svg)](https://tldrlegal.com/license/mit-license)
